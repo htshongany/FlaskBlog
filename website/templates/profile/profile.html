@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div  class="center">
+
+	<section class="user-profile">
+	<div class="add-post">
+	<h1>{{user.username}} </h1>   
+    	<a href="{{ url_for('posts.add_article') }}"> add new article</a>
+    </div>
+    <hr>
+    <div class='user-article'>
+    	<h2>my articles </h2>
+    	<hr>
+    	
+    	<ul>
+        {% for article in user.article %}
+    		<li><a href="{{ url_for('posts.article_detail' , id=article.id)   }}">{{article.title}}</a></li>
+    		<hr>
+    	{% endfor %}
+    	</ul>
+    </div>
+
+    
+</section>
+
+</div>
+
+{% endblock content %}
+
+

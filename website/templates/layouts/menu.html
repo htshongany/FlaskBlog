@@ -1,0 +1,27 @@
+<nav class="main-menu">
+        {% if user.is_authenticated%}  
+
+
+        <ul class="left">  
+            <a href="{{url_for('profile.user_profile')}}"><h1>{{user.username}}</h1></a>
+            <a href="{{url_for('views.home')}}"><div>Home</div></a>
+            <a href="{{url_for('views.about')}}"> <div>About</div> </a>
+            <a href="{{url_for('posts.article_list')}}"> <div>Blog</div></a>
+        </ul>
+
+        <ul class="right">
+            <a href="{{url_for('auth.logout')}}" class="logout">Logout</a>      
+        </ul>
+        {% else %}
+        <ul class="left">
+         	<a href="{{url_for('views.home')}}"><h1>LOGO</h1></a>
+            <a href="{{url_for('views.home')}}"><div>Home</div></a>
+            <a href="{{url_for('views.about')}}"> <div>About</div></a>
+        </ul>
+
+        <ul class="right">
+         	<a href="{{url_for('auth.login')}}" class="login">Login</a>  
+            <a href="{{url_for('auth.sing_up')}}" class="sing-up">sing-up</a>
+        </ul>
+        {% endif %}            
+</nav>

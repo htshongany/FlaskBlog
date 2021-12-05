@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<form method="POST" class="form-sing-up">
+
+	<div class='form-control'>
+		<h2>Sing-Up</h2>
+        <label>email</label>
+        <input type="email" name="email" id="email" placeholder="your email">
+
+        <label>username</label>
+        <input type="text" name="username" , id='username' placeholder="your name">
+
+        <label>password</label>
+        <input type="password" name="password1" id="password1" placeholder="your password">
+   
+        <label>confirm password</label>
+        <input type="password" name="password2" id="password2" placeholder="confirm your password">
+   
+        <button>submit</button>
+
+    </div>
+</form>
+{% endblock content %}

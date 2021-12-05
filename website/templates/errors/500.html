@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="errorhandler">
+	<div>
+		<h1>Internal Server Error <span>500</span></h1>
+	</div>
+	<div>
+		<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application. <a href="{{ url_for('views.home') }}">home</a> page ...</p>
+
+	</div>
+</div>
+
+{% endblock content %}

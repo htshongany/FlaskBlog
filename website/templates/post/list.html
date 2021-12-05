@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for article in articles %}
+{% if (article.available == True) %}
+<article class="article">
+    <h1>{{article.title}}</h1>
+    <hr>
+    
+    <div class="article-content">  
+        {{ article.content|safe|truncate|markdown  }}
+    </div>
+
+    <hr>
+
+    <div class="info">
+
+        <div class="info-list" >
+        	<span>posted by : {{article.author.username}}</span>
+            <span>posted at : {{article.post_date.strftime('%Y-%m-%d')}}</span>
+        </div>
+        <div class="link-list">
+            {% if user.id == article.author.id %}
+        	<span><a href="{{url_for('posts.article_update' , id=article.id)}}" class="link blue">edit</a></span>
+        	<span><a href="{{url_for('posts.delete_article' , id=article.id)}}" class="link danger">delete</a></span>
+            {% endif %}
+        	<span><a href="{{url_for('posts.article_detail' , id=article.id)}}" class="link green">detail</a></span>
+        </div>
+                
+    </div>
+
+</article>
+{% endif %}
+{% endfor %}
+{% endblock content %}

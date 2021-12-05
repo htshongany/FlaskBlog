@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" class="form-article">
+    <div class="form-controle">
+        <h1>update post</h1>
+        <input type="text" name="article-title" id="post-title" required placeholder="title" value="{{article.title}}">
+
+        <textarea rows="20" name="article-content" id="article-content" placeholder="..."  required>{{article.content}}</textarea>
+
+        <input class="check" type="checkbox" name="available" id="available" value="{{ article.available }}">
+        
+        <button type="submit"> submit</button>
+    </div>    
+</form> 
+
+
+<!-- <form method="POST">
+	<input type="text" name="article-title" id="post-title" required placeholder="title" value="{{article.title}}">
+  	<textarea id="summernote" name="editordata">{{article.content}}</textarea>
+  	<button type="submit"> submit</button>
+</form> 
+ -->
+
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src='{{ url_for("static" , filename="js/main.js" ) }}'></script>
+<script>set_checkbox()</script>
+{% endblock scripts %}

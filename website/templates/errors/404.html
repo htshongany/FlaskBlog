@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+	.errorhandler{
+		background: url("{{ url_for('static', filename='assets/image/404.jpg') }}");
+		background-size: 50%;
+	}
+	.errorhandler div p a{
+		text-decoration: none;
+	}
+</style>
+
+
+<section class="errorhandler">
+	<div>
+		<h1> Not Found <span>404</span></h1>
+	</div>
+	<hr>
+	<div>
+		<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again or go back to the <a href="{{ url_for('views.home') }}">home</a> page</p>
+
+	</div>
+<section>
+
+
+{% endblock content %}
+

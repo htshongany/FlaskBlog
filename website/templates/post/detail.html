@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if article.available %}
+<article class="article">
+    <h1>{{article.title}}</h1>
+    <hr>
+    <div class="article-content">  
+        {{article.content|markdown|safe }}
+    </div>
+    <hr>
+    <div class="info">
+        <div class="info-list">
+            <span>posted by : {{article.author.username}}</span>
+            <span>posted at : {{article.post_date.strftime('%Y-%m-%d')}}</span>
+        </div>
+        <div class="link-list">
+            {% if user.id == article.author.id %}
+            <span><a href="{{url_for('posts.article_update' , id=article.id)}}" class="link blue">edit</a></span>
+            <span><a href="{{url_for('posts.delete_article' , id=article.id)}}" class="link danger">delete</a></span>
+            {% endif %}
+            <span><a href="{{url_for('posts.article_list')}}" class="link green">black</a></span> 
+        </div>
+               
+    </div>
+</article>
+{% elif article.author.id == user.id %}
+<article class="article">
+    <h1>{{article.title}}</h1>
+    <hr>
+    <div class="article-content">  
+        {{article.content|markdown|safe }}
+    </div>
+    <hr>
+    <div class="info">
+        <div class="info-list">
+            <span>posted by : {{article.author.username}}</span>
+            <span>posted at : {{article.post_date.strftime('%Y-%m-%d')}}</span>
+        </div>
+        <div class="link-list">
+            {% if user.id == article.author.id %}
+            <span><a href="{{url_for('posts.article_update' , id=article.id)}}" class="link blue">edit</a></span>
+            <span><a href="{{url_for('posts.delete_article' , id=article.id)}}" class="link danger">delete</a></span>
+            {% endif %}
+            <span><a href="{{url_for('posts.article_list')}}" class="link green">black</a></span> 
+        </div>
+               
+    </div>
+</article>
+{% else %}
+
+<p>article not available</p>
+
+{% endif %}
+
+{% endblock content %}
